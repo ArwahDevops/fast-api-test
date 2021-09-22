@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt --default-timeout=100 future
+RUN pip install -r requirements.txt
 
 # copy project
 COPY . .
