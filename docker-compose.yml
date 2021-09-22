@@ -2,9 +2,16 @@ version: '3.8'
 
 services:
   web:
+    container_name: api-backend
     build: .
     command: uvicorn app.main:app --host 0.0.0.0
     volumes:
       - .:/app
     ports:
-      - 8008:8000
+      - 8081:8000
+    networks:
+      - backend
+    
+networks:
+  backend:
+    name: app_network
