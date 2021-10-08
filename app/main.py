@@ -1,9 +1,8 @@
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 
 app = FastAPI()
 
 @app.get("/")
-async def home(request: Request):
-    client_host = request.client.host
-    return {"client_host": client_host}
+async def home():
+    return {"message": "Hello World"}
