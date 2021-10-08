@@ -1,9 +1,11 @@
 import uvicorn
-import socket
-from fastapi import FastAPI, request
+from fastapi import FastAPI, Request
 
 app = FastAPI()
 
 @app.get("/")
-async def root():
-    return "This is an example wsgi app served from {} to {}".format(socket.gethostname(), request.remote_addr)
+def client_data(request: Request):
+    client_host = request.client.host
+    client_port = request.client.port
+    
+    return {"client_host": client_host, "client_port": client_port}
